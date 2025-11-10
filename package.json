@@ -1,0 +1,35 @@
+{
+  "name": "jakewel-ch",
+  "version": "1.0.0",
+  "description": "Personal site + gallery for Jake Welch",
+  "scripts": {
+    "cultivate": "node src/cultivate.js .",
+    "update-art-gallery": "node art-gallery/fetch-arena.js",
+    "images-process": "node images-i-made/process-images.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jake-welch-design/jakewel.ch-v7.git"
+  },
+  "homepage": "https://jakewelch.com",
+  "bugs": {
+    "url": "https://github.com/jake-welch-design/jakewel.ch-v7/issues"
+  },
+  "author": "Jake Welch <your.email@example.com>",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "get-video-dimensions": "^1.0.0",
+    "image-size": "^1.0.2",
+    "marked": "^5.1.1",
+    "micromatch": "^4.0.5",
+    "parse-gitignore": "^2.0.0",
+    "pretty-bytes": "^6.1.0",
+    "sharp": "^0.34.5"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  }
+}

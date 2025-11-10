@@ -1,0 +1,1 @@
+This folder is updated with images of artworks from my Are.na board [Art Gallery](https://www.are.na/jake-welch/art-gallery-zdcjhk1yrrc) which I've been curating since August 2023. I'm always trying to stay inspired and as I've stumbled on new artworks online, in museums, and elsewhere, I've added them here.

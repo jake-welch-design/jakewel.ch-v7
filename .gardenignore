@@ -1,0 +1,13 @@
+*.html
+CNAME
+README.md
+package-lock.json
+package.json
+node_modules/
+.gardenignore
+.gitignore
+src/
+views/
+.DS_Store
+watch.sh
+hidden-assets/

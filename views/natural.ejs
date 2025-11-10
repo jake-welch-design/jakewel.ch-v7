@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- this html file was created by https://file.gallery/src/cultivate.js -->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jakewel.ch<% if (locals.title && title) { %>/<%= title %>
+        <% } %>
+  </title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="author" content="file.gallery">
+  <meta name="description" content="file.gallery is a site sown from files and directories.">
+
+  <style>
+    html {
+      background-image: url("../hidden-assets/IMG_5165.JPG");
+      background-size: cover;
+      height: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      text-size-adjust: none;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: monospace;
+      font-size: 11px;
+
+      <%_ if (locals.backgroundColor) {
+        _%>color: <%=textColor %>;
+        background-color: <%=backgroundColor %>;
+        <%_
+      }
+
+      _%>overflow-x: scroll;
+    }
+
+    main {
+      max-width: 100%;
+      box-sizing: border-box;
+      align-items: center;
+      padding: 1.5em;
+    }
+
+    .plantbed {
+      width: 0;
+      position: relative;
+    }
+
+    .item {
+      display: block;
+      position: absolute;
+      padding: 0.5em 1em;
+      outline: 1px solid rgba(0, 0, 0, 1);
+      background-color: white;
+      max-width: 30em;
+    }
+
+    .item * {
+      width: max-content;
+      max-width: 30em;
+    }
+
+    .item img,
+    .item video,
+    .item audio {
+      max-width: 18em;
+      height: auto;
+    }
+
+    .item audio {
+      height: 3em;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 1em;
+      font-weight: normal;
+      color: gray;
+      /* edit me! */
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    ol,
+    li,
+    pre,
+    code {
+      margin: 0;
+    }
+
+    pre {
+      font-family: inherit;
+      white-space: pre-wrap;
+    }
+
+    a {
+      color: #0000EE;
+      /* edit me! */
+    }
+
+    .md h1,
+    .md h2,
+    .md h3,
+    .md h4,
+    .md h5,
+    .md h6,
+    .md p,
+    .md pre {
+      margin-top: 1em;
+      /* max-width: 30em; */
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <%_ if (locals.title && title) { _%>
+      <h3><a href="..">back</a></h3>
+      <p>
+        <%= title %>
+      </p>
+      <%_ } _%>
+
+        <div class="plantbed" style="left: max(0px, calc(50% - <%= centerOffset %>px - 9em))">
+          <%_ files.forEach(function(file) { _%>
+            <div class="item" style="top: <%= file.location.y %>px; left: <%= file.location.x %>px">
+              <%_ if (file.type==='directory' ) { _%>
+                <h3><a href="<%= file.path %>">
+                    <%= file.name %>
+                  </a> (<%= file.contents %>)</h3>
+                <%_ } else if (file.type==='image' ) { _%>
+                  <h3><a href="<%= file.path %>">
+                      <%= file.name %>
+                    </a> (<%= file.size %>)</h3>
+                  <a href="<%= file.path %>">
+                    <img src="<%= file.path %>" alt="<%= file.name %>" width="<%= file.width %>"
+                      height="<%= file.height %>">
+                  </a>
+                  <%_ } else if (file.type==='video' ) { _%>
+                    <h3><a href="<%= file.path %>">
+                        <%= file.name %>
+                      </a> (<%= file.size %>)</h3>
+                    <video width="<%= file.width %>" height="<%= file.height %>" controls>
+                      <source src="<%= file.path %>"> <!-- TODO: add type -->
+                      Your browser does not support the video tag.
+                    </video>
+                    <%_ } else if (file.type==='audio' ) { _%>
+                      <h3><a href="<%= file.path %>">
+                          <%= file.name %>
+                        </a> (<%= file.size %>)</h3>
+                      <audio controls>
+                        <source src="<%= file.path %>"> <!-- TODO: add type -->
+                        Your browser does not support the audio tag.
+                      </audio>
+                      <%_ } else if (file.type==='text' ) { _%>
+                        <h3><a href="<%= file.path %>">
+                            <%= file.name %>
+                          </a></h3>
+                        <%_ if (file.contents) { _%>
+                          <pre><%= file.contents %></pre>
+                          <%_ } _%>
+                            <%_ } else if (file.type==='markdown' ) { _%>
+                              <h3><a href="<%= file.path %>">
+                                  <%= file.name %>
+                                </a> (<%= file.size %>)</h3>
+                              <div class="md">
+                                <%- file.contents _%>
+                              </div>
+                              <%_ } else if (file.type==='raw' ) { _%>
+                                <h3>
+                                  <%= file.name %>
+                                </h3>
+                                <%_ if (file.contents) { _%>
+                                  <pre><%= file.contents %></pre>
+                                  <%_ } _%>
+                                    <%_ } else if (file.type==='other' ) { _%>
+                                      <h3><a href="<%= file.path %>">
+                                          <%= file.name %>
+                                        </a> (<%= file.size %>)</h3>
+                                      <%_ } _%>
+            </div>
+            <%_ }) _%>
+        </div>
+
+  </main>
+</body>
+<!--
+kevin.garden (natural template) by Kevin Chen, 2023-2025
+licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
+please link to https://kevin.garden/ or https://file.gallery/, if possible
+attribution only in the html source is sufficient. non-commercial use only :)
+-->
+
+</html>
