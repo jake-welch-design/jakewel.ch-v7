@@ -1,7 +1,3 @@
-This is a website populated from the <br>
-files, directories, and .DS_Store on my laptop.<br>
-This is is made possible thanks to [Kevin Chen](https://kevin.garden/).
-Get the source code [here](https://github.com/inchkev/file-gallery) to start<br>
-your own file garden, gallery, etc.
-
-#### _/src, /views: see [license](https://github.com/inchkev/file-gallery?tab=readme-ov-file#license)_<br>_all other content: [cc by-nc 4.0](https://creativecommons.org/licenses/by-nc/4.0/)_
+This is a website populated from <br>
+the files, directories, and .DS_Store in a folder on my laptop's desktop.<br>
+This is is made possible thanks to the [file-gallery](https://github.com/inchkev/file-gallery) project by [kevin.garden](https://kevin.garden/). Thanks Kevin!
