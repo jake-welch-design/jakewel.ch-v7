@@ -1,1 +1,1 @@
-[RestroomArchive.com](https://RestroomArchive.com)
+[🚽🗄️](https://RestroomArchive.com)
