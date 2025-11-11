@@ -8,7 +8,7 @@ in a way that's meaningful and breaks free from <a href="https://www.humanetech.
 interested in having your own personal site, I've written a <a href="https://tutorials.jakewel.ch/build-a-website.html">beginner-friendly guide</a> on how to do so for free! 
 Feel free to surf around, and if you feel so inclined, leave a note in my <a href="https://ourworldoftext.com/jakewelch" target="_blank">guest book</a>, or shoot me an <a href="mailto:jaketwelch@gmail.com">email</a>.
 <br><br>
-Thanks for stopping by!
+Thanks for visiting!
 
 <style>
 .what-am-i {
