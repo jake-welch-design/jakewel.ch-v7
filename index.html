@@ -14,8 +14,8 @@
 
   <style>
     html {
-      /* background-image: url("../hidden-assets/bg.jpg"); */
-      background-image: url("../hidden-assets/bg-dithered.png");
+      /* background-image: url("./hidden-assets/bg.jpg"); */
+      background-image: url("./hidden-assets/bg-dithered.png");
       background-size: cover;
       image-rendering: pixelated;
       height: 100%;
@@ -23,43 +23,57 @@
 
     html,
     body {
+      height: 100%;
       margin: 0;
       text-size-adjust: none;
       -webkit-text-size-adjust: 100%;
     }
 
     body {
-      /* font-family: Arial, Helvetica, sans-serif; */
-      font-family: monospace, monospace;
+      font-family: monospace;
       font-size: 11px;
 
 overflow-x: scroll;
     }
 
     main {
+      max-width: 100%;
       box-sizing: border-box;
+      align-items: center;
       padding: 1.5em;
     }
 
+    .plantbed {
+      width: 0;
+      position: relative;
+    }
+
     .item {
-      display: inline-block;
-      padding: 0em 1em;
-      margin: 0.5em 1em;
-      border: 1px solid rgba(0, 0, 0, 1);
+      display: block;
+      position: absolute;
+      padding: 0.5em 1em;
+      outline: 1px solid rgba(0, 0, 0, 1);
       background-color: white;
       max-width: 30em;
     }
 
+    .item * {
+      width: max-content;
+      max-width: 30em;
+    }
+
     .item img,
-    .item video {
-      width: auto;
+    .item video,
+    .item audio {
+      max-width: 18em;
       height: auto;
-      max-width: 28em;
-      max-height: 26em;
+    }
+
+    .item img {
+      image-rendering: pixelated;
     }
 
     .item audio {
-      max-width: 18em;
       height: 3em;
     }
 
@@ -117,13 +131,13 @@ overflow-x: scroll;
 <body>
   <main>
 
-        <div class="plantbed">
-            <div class="item">
+        <div class="plantbed" style="left: max(0px, calc(50% - 297px - 9em))">
+            <div class="item" style="top: 595px; left: 15px">
                                 <h3>
                                   [{&#34;hex&#34;:&#34;#020b1a&#34;},{&#34;hex&#34;:&#34;#401d11&#34;},{&#34;hex&#34;:&#34;#b45d40&#34;},{&#34;hex&#34;:&#34;#dd723c&#34;},{&#34;hex&#34;:&#34;#ff9641&#34;},{&#34;hex&#34;:&#34;#dcb697&#34;},{&#34;hex&#34;:&#34;#9ba5ae&#34;},{&#34;hex&#34;:&#34;#3e5879&#34;}]
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 111px; left: 5px">
                               <h3><a href="about.md">
                                   about.md
                                 </a> (2.58kB)</h3>
@@ -180,12 +194,12 @@ text-align: center;
     </script>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 477px; left: 9px">
                 <h3><a href="art-gallery/">
                     art-gallery/
                   </a> (114 items)</h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 714px; left: 0px">
                               <h3><a href="attribution.md">
                                   attribution.md
                                 </a> (275B)</h3>
@@ -195,7 +209,7 @@ the files, directories, and .DS_Store in a folder on my laptop&#39;s desktop.<br
 This is is made possible thanks to the <a href="https://github.com/inchkev/file-gallery">file-gallery</a> project by <a href="https://kevin.garden/">kevin.garden</a>. Thanks Kevin!</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 464px; left: 594px">
                               <h3><a href="enter-the-portal.md">
                                   enter-the-portal.md
                                 </a> (274B)</h3>
@@ -205,7 +219,7 @@ This is is made possible thanks to the <a href="https://github.com/inchkev/file-
 🌫️🌫️🌫️🌫️🌫️🌀🌫️🌫️🌫️🌫️🌫️</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 552px; left: 501px">
                               <h3><a href="html day 2025.md">
                                   html day 2025.md
                                 </a> (56B)</h3>
@@ -213,38 +227,38 @@ This is is made possible thanks to the <a href="https://github.com/inchkev/file-
                                 <p>–&gt;<a href="https://jakewel.ch/html-day-2025.html">❇️</a>&lt;–</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 419px; left: 9px">
                 <h3><a href="images-i-made/">
                     images-i-made/
                   </a> (26 items)</h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 565px; left: 14px">
                                 <h3>
                                   img dither pallette
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 4px">
                                 <h3>
                                   jake welch
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 710px; left: 582px">
                                 <h3>
                                   last updated
                                 </h3>
                                   <pre>10 November 2025 at 4:25pm</pre>
             </div>
-            <div class="item">
+            <div class="item" style="top: 761px; left: 584px">
                                       <h3><a href="LICENSE">
                                           LICENSE
                                         </a> (11.4kB)</h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 448px; left: 9px">
                 <h3><a href="life-lately/">
                     life-lately/
                   </a> (3 items)</h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 57px; left: 555px">
                   <h3><a href="me.png">
                       me.png
                     </a> (250kB)</h3>
@@ -253,12 +267,12 @@ This is is made possible thanks to the <a href="https://github.com/inchkev/file-
                       height="905">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 366px; left: 452px">
                                 <h3>
                                   misc links
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 402px; left: 500px">
                               <h3><a href="RestroomArchive.md">
                                   RestroomArchive.md
                                 </a> (43B)</h3>
@@ -266,7 +280,7 @@ This is is made possible thanks to the <a href="https://github.com/inchkev/file-
                                 <p><a href="https://RestroomArchive.com">🚽🗄️</a></p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 469px; left: 423px">
                               <h3><a href="special-fish.md">
                                   special-fish.md
                                 </a> (97B)</h3>
@@ -274,7 +288,7 @@ This is is made possible thanks to the <a href="https://github.com/inchkev/file-
                                 <p>-~~~~~~~~~~~~~~~-<br> -~~~ <a href="https://special.fish/jakewelch">&gt;&lt;,^*&gt;</a> ~~~~-<br> -~~~~~~~~~~~~~~~-</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 677px; left: 579px">
                 <h3><a href="time-machine/">
                     time-machine/
                   </a> (1 item)</h3>
@@ -284,7 +298,7 @@ This is is made possible thanks to the <a href="https://github.com/inchkev/file-
   </main>
 </body>
 <!--
-kevin.garden (formal template) by Kevin Chen, 2023-2025
+kevin.garden (natural template) by Kevin Chen, 2023-2025
 licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
 please link to https://kevin.garden/ or https://file.gallery/, if possible
 attribution only in the html source is sufficient. non-commercial use only :)
