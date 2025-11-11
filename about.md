@@ -4,7 +4,8 @@ In my free time I love to <a href="https://www.goodreads.com/jakewelch" target="
 usually related to history and art.
 <br><br>
 This site is my attempt at <a href="https://www.are.na/jake-welch/web-revolution" target="_blank">reclaiming a corner of the internet</a> as a place to share and connect
-in a way that's meaningful and breaks free from <a href="https://www.humanetech.com/youth/the-attention-economy">the exploitative algorithms</a> subjected on us by Big Tech.
+in a way that's meaningful and breaks free from <a href="https://www.humanetech.com/youth/the-attention-economy">the exploitative algorithms</a> subjected on us by Big Tech. If you're at all
+interested in having your own personal site, I've written a <a href="https://tutorials.jakewel.ch/build-a-website.html">beginner friendly guide</a> to help others achieve that goal, and for free! 
 Feel free to surf around and if you feel so inclined, leave a note in my <a href="https://ourworldoftext.com/jakewelch" target="_blank">guest book</a>, or shoot me an <a href="mailto:jaketwelch@gmail.com">email</a>.
 <br><br>
 Thanks for stopping by!

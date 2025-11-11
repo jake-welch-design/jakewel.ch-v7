@@ -15,8 +15,10 @@
 
   <style>
     html {
-      background-image: url("./hidden-assets/bg.jpg");
+      /* background-image: url("./hidden-assets/bg.jpg"); */
+      background-image: url("./hidden-assets/bg-dithered.png");
       background-size: cover;
+      image-rendering: pixelated;
       height: 100%;
     }
 
@@ -72,6 +74,10 @@
     .item audio {
       max-width: 18em;
       height: auto;
+    }
+
+    .item img {
+      image-rendering: pixelated;
     }
 
     .item audio {
