@@ -131,7 +131,104 @@ overflow-x: scroll;
 <body>
   <main>
 
-        <div class="plantbed" style="left: max(0px, calc(50% - 297.5px - 9em))">
+        <div class="plantbed" style="left: max(0px, calc(50% - 297px - 9em))">
+            <div class="item" style="top: 590px; left: 0px">
+                              <h3><a href="⏰.md">
+                                  ⏰.md
+                                </a> (3.06kB)</h3>
+                              <div class="md">
+                                <p><span id="current-time">It is currently <u><span id="current-time-time">[Current time will be inserted here]</span></u> on 
+<br><u><span id="current-time-date">[Current date will be inserted here]</span></u>.</span>
+<br>
+<br>
+<span id="last-updated">This site was last updated
+<br>at <u><span id="last-updated-time">[Time will be inserted here]</span></u> on 
+<br><u><span id="last-updated-date">[Date will be inserted here]</span></u>.</span>              </p>
+<script>
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const dateString = now.toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('current-time-time').textContent = timeString;
+            document.getElementById('current-time-date').textContent = dateString;
+        }
+async function setLastUpdated() {
+    try {
+        const response = await fetch(window.location.href, { method: 'HEAD' });
+        const lastModified = response.headers.get('Last-Modified');
+        let lastUpdated; 
+        if (lastModified) {
+            lastUpdated = new Date(lastModified);
+            } else {
+            lastUpdated = new Date();
+            }
+        const timeString = lastUpdated.toLocaleString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+            });
+        const dateString = lastUpdated.toLocaleString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+            });
+        document.getElementById('last-updated-time').textContent = timeString;
+        document.getElementById('last-updated-date').textContent = dateString;
+            } catch (error) {
+            const fallbackDate = new Date();
+            const timeString = fallbackDate.toLocaleString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+            });
+            const dateString = fallbackDate.toLocaleString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+            });
+            document.getElementById('last-updated-time').textContent = timeString;
+            document.getElementById('last-updated-date').textContent = dateString;
+            }
+        }
+        setLastUpdated();
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 1000);
+        document.querySelectorAll('.post img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function (e) {
+                e.stopPropagation(); // Prevent event bubbling
+                window.open(this.src, '_blank');
+            });
+        });
+    </script>                              </div>
+            </div>
+            <div class="item" style="top: 591px; left: 520px">
+                              <h3><a href="❇️.md">
+                                  ❇️.md
+                                </a> (55B)</h3>
+                              <div class="md">
+                                <p><a href="https://jakewel.ch/html-day-2025.html">HTML Day 2025</a></p>
+                              </div>
+            </div>
+            <div class="item" style="top: 452px; left: 507px">
+                              <h3><a href="🚽🗄️.md">
+                                  🚽🗄️.md
+                                </a> (51B)</h3>
+                              <div class="md">
+                                <p><a href="https://RestroomArchive.com">RestroomArchive.com</a></p>
+                              </div>
+            </div>
             <div class="item" style="top: 713px; left: 0px">
                               <h3><a href="about.md">
                                   about.md
@@ -205,7 +302,7 @@ text-align: center;
     </script>
                               </div>
             </div>
-            <div class="item" style="top: 505px; left: 595px">
+            <div class="item" style="top: 508px; left: 594px">
                               <h3><a href="enter-the-portal.md">
                                   enter-the-portal.md
                                 </a> (274B)</h3>
@@ -215,31 +312,12 @@ text-align: center;
 🌫️🌫️🌫️🌫️🌫️🌀🌫️🌫️🌫️🌫️🌫️</p>
                               </div>
             </div>
-            <div class="item" style="top: 592px; left: 502px">
-                              <h3><a href="html day 2025.md">
-                                  html day 2025.md
-                                </a> (56B)</h3>
-                              <div class="md">
-                                <p>–&gt;<a href="https://jakewel.ch/html-day-2025.html">❇️</a>&lt;–</p>
-                              </div>
-            </div>
-            <div class="item" style="top: 419px; left: 9px">
-                <h3><a href="images-i-made/">
-                    images-i-made/
-                  </a> (26 items)</h3>
-            </div>
             <div class="item" style="top: 50px; left: 4px">
                                 <h3>
                                   jake welch
                                 </h3>
             </div>
-            <div class="item" style="top: 710px; left: 582px">
-                                <h3>
-                                  last updated
-                                </h3>
-                                  <pre>11 November 2025 at 1:40pm</pre>
-            </div>
-            <div class="item" style="top: 760px; left: 584px">
+            <div class="item" style="top: 803px; left: 591px">
                                       <h3><a href="LICENSE">
                                           LICENSE
                                         </a> (11.4kB)</h3>
@@ -258,18 +336,15 @@ text-align: center;
                       height="905">
                   </a>
             </div>
-            <div class="item" style="top: 405px; left: 426px">
+            <div class="item" style="top: 410px; left: 497px">
                                 <h3>
                                   misc links
                                 </h3>
             </div>
-            <div class="item" style="top: 443px; left: 501px">
-                              <h3><a href="RestroomArchive.md">
-                                  RestroomArchive.md
-                                </a> (43B)</h3>
-                              <div class="md">
-                                <p><a href="https://RestroomArchive.com">🚽🗄️</a></p>
-                              </div>
+            <div class="item" style="top: 507px; left: 9px">
+                <h3><a href="some-of-my-work/">
+                    some-of-my-work/
+                  </a> (26 items)</h3>
             </div>
             <div class="item" style="top: 510px; left: 424px">
                               <h3><a href="special-fish.md">
@@ -285,10 +360,10 @@ text-align: center;
                                 </h3>
                                   <pre>[{&#34;hex&#34;:&#34;#020b1a&#34;},{&#34;hex&#34;:&#34;#401d11&#34;},{&#34;hex&#34;:&#34;#b45d40&#34;},{&#34;hex&#34;:&#34;#dd723c&#34;},{&#34;hex&#34;:&#34;#ff9641&#34;},{&#34;hex&#34;:&#34;#dcb697&#34;},{&#34;hex&#34;:&#34;#9ba5ae&#34;},{&#34;hex&#34;:&#34;#3e5879&#34;}] </pre>
             </div>
-            <div class="item" style="top: 678px; left: 579px">
+            <div class="item" style="top: 775px; left: 590px">
                 <h3><a href="time-machine/">
                     time-machine/
-                  </a> (2 items)</h3>
+                  </a> (3 items)</h3>
             </div>
         </div>
 
