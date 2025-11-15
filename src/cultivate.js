@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+//Modified by Jake Welch (https://jakewel.ch) 
+
 // node defaults
 import path from "path";
 import { promises as fs } from "fs";
