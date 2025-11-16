@@ -313,7 +313,15 @@ async function cultivate(rootPath, relativePath = ".", currDir = "", icvp = null
       return fileInfo;
     }),
   ]);
-  processedFiles.sort((a, b) => a.name.localeCompare(b.name));
+  
+  // Sort files - descending for life-lately, ascending for others
+  processedFiles.sort((a, b) => {
+    if (currDir === "life-lately") {
+      return b.name.localeCompare(a.name); // descending
+    }
+    return a.name.localeCompare(b.name); // ascending
+  });
+  
   dirData.files = processedFiles;
 
   if (renderFreeform && !dirData.files.every((fileInfo) => "location" in fileInfo)) {
