@@ -1,1 +1,1 @@
--~~~~~~~~~~~~~~~-<br> -~~~ [><,^\*>](https://special.fish/jakewelch) ~~~~-<br> -~~~~~~~~~~~~~~~-
+-~~~~~~~~~~~~~~~-<br> -~~~ <a href="https://special.fish/jakewelch" target="_blank">><,^\*></a> ~~~~-<br> -~~~~~~~~~~~~~~~-
