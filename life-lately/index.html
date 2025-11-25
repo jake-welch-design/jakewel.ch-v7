@@ -17,8 +17,8 @@
 
   <style>
     html {
-      /* background-image: url("../hidden-assets/bg.jpg"); */
-      background-image: url("../hidden-assets/bg-dithered.png");
+      /* background-image: url("./hidden-assets/bg.jpg"); */
+      background-image: url("./hidden-assets/bg-dithered.png");
       background-size: cover;
       image-rendering: pixelated;
       height: 100%;
@@ -26,43 +26,57 @@
 
     html,
     body {
+      height: 100%;
       margin: 0;
       text-size-adjust: none;
       -webkit-text-size-adjust: 100%;
     }
 
     body {
-      /* font-family: Arial, Helvetica, sans-serif; */
-      font-family: monospace, monospace;
+      font-family: monospace;
       font-size: 11px;
 
 overflow-x: scroll;
     }
 
     main {
+      max-width: 100%;
       box-sizing: border-box;
+      align-items: center;
       padding: 1.5em;
     }
 
+    .plantbed {
+      width: 0;
+      position: relative;
+    }
+
     .item {
-      display: inline-block;
-      padding: 0em 1em;
-      margin: 0.5em 1em;
-      border: 1px solid rgba(0, 0, 0, 1);
+      display: block;
+      position: absolute;
+      padding: 0.5em 1em;
+      outline: 1px solid rgba(0, 0, 0, 1);
       background-color: white;
       max-width: 30em;
     }
 
+    .item * {
+      width: max-content;
+      max-width: 30em;
+    }
+
     .item img,
-    .item video {
-      width: auto;
+    .item video,
+    .item audio {
+      max-width: 18em;
       height: auto;
-      max-width: 28em;
-      max-height: 26em;
+    }
+
+    .item img {
+      image-rendering: pixelated;
     }
 
     .item audio {
-      max-width: 18em;
       height: 3em;
     }
 
@@ -76,13 +90,6 @@ overflow-x: scroll;
       font-weight: normal;
       color: gray;
       /* edit me! */
-    }
-
-    h3 {
-      max-width: 20em;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      /* word-break: break-all; */
     }
 
     h1,
@@ -126,19 +133,32 @@ overflow-x: scroll;
 
 <body>
   <main>
-      <h3 style="padding: 0.25em; background: white; border: 1px solid black; display: inline-block;"><a
-          href="..">back</a></h3>
-      <p style="padding: 0.25em; background: white; border: 1px solid black; display: inline-block">
+      <h3><a href="..">back</a></h3>
+      <p>
         life-lately/
       </p>
-      
-        <div class="plantbed">
-            <div class="item">
+
+        <div class="plantbed" style="left: max(0px, calc(50% - 330px - 9em))">
+            <div class="item" style="top: 946px; left: 330px">
+                                <h3>
+                                  2025-11-25..
+                                </h3>
+            </div>
+            <div class="item" style="top: 946px; left: 110px">
+                      <h3><a href="2025-11-25!Suggested_Listening-Marc_Cary-Taiwa.mp3">
+                          2025-11-25!Suggested_Listening-Marc_Cary-Taiwa.mp3
+                        </a> (6.28MB)</h3>
+                      <audio controls>
+                        <source src="2025-11-25!Suggested_Listening-Marc_Cary-Taiwa.mp3"> <!-- TODO: add type -->
+                        Your browser does not support the audio tag.
+                      </audio>
+            </div>
+            <div class="item" style="top: 946px; left: 0px">
                                 <h3>
                                   2025-11-24..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 834px; left: 660px">
                               <h3><a href="2025-11-24!post.md">
                                   2025-11-24!post.md
                                 </a> (754B)</h3>
@@ -148,12 +168,12 @@ overflow-x: scroll;
 Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our friends at our place. I&#39;m looking forward to it, we&#39;re planning on playing lots of board games, doing a puzzle, and generally spending a cozy day in together. </p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 834px; left: 550px">
                                 <h3>
                                   2025-11-22..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 834px; left: 440px">
                   <h3><a href="2025-11-22_Pepper_keeping_me_company.png">
                       2025-11-22_Pepper_keeping_me_company.png
                     </a> (388kB)</h3>
@@ -162,12 +182,12 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 834px; left: 330px">
                                 <h3>
                                   2025-11-21..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 834px; left: 220px">
                   <h3><a href="2025-11-21_Old_school_apartment_rental_ad.png">
                       2025-11-21_Old_school_apartment_rental_ad.png
                     </a> (375kB)</h3>
@@ -176,7 +196,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 834px; left: 110px">
                   <h3><a href="2025-11-21_Number_One_Garden_Chinese_the_other_day.png">
                       2025-11-21_Number_One_Garden_Chinese_the_other_day.png
                     </a> (316kB)</h3>
@@ -185,7 +205,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 834px; left: 0px">
                   <h3><a href="2025-11-21_Late_night_on_16th_and_PPW.png">
                       2025-11-21_Late_night_on_16th_and_PPW.png
                     </a> (308kB)</h3>
@@ -194,7 +214,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 722px; left: 660px">
                   <h3><a href="2025-11-21_Late_night_at_Mr_Kiwi.png">
                       2025-11-21_Late_night_at_Mr_Kiwi.png
                     </a> (405kB)</h3>
@@ -203,7 +223,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 722px; left: 550px">
                   <h3><a href="2025-11-21_Craft_zone_w_Stephs_new_sewing_machine.png">
                       2025-11-21_Craft_zone_w_Stephs_new_sewing_machine.png
                     </a> (357kB)</h3>
@@ -212,7 +232,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 722px; left: 440px">
                   <h3><a href="2025-11-21_Chatting_on_the_corner_by_the_Deli.png">
                       2025-11-21_Chatting_on_the_corner_by_the_Deli.png
                     </a> (389kB)</h3>
@@ -221,7 +241,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 722px; left: 330px">
                   <h3><a href="2025-11-21_Afternoon_light_in_the_apartment.png">
                       2025-11-21_Afternoon_light_in_the_apartment.png
                     </a> (382kB)</h3>
@@ -230,12 +250,12 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 722px; left: 220px">
                                 <h3>
                                   2025-11-19..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 722px; left: 110px">
                       <h3><a href="2025-11-19!Suggested_Listening-Matthew_Halsall-Salute_to_the_Sun.mp3">
                           2025-11-19!Suggested_Listening-Matthew_Halsall-Salute_to_the_Sun.mp3
                         </a> (15.9MB)</h3>
@@ -244,7 +264,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
                         Your browser does not support the audio tag.
                       </audio>
             </div>
-            <div class="item">
+            <div class="item" style="top: 722px; left: 0px">
                               <h3><a href="2025-11-19!post.md">
                                   2025-11-19!post.md
                                 </a> (1.38kB)</h3>
@@ -254,7 +274,7 @@ Thanksgiving is this Thursday and we&#39;ll be having a small dinner with our fr
 Since I&#39;ve been inside most of the day, I thought I&#39;d share some photos from the neighborhood for those who haven&#39;t visited Steph and I yet. </p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 610px; left: 660px">
                   <h3><a href="2025-11-19_Pepper_giving_me_pre-dinner_snuggles.png">
                       2025-11-19_Pepper_giving_me_pre-dinner_snuggles.png
                     </a> (410kB)</h3>
@@ -263,7 +283,7 @@ Since I&#39;ve been inside most of the day, I thought I&#39;d share some photos 
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 610px; left: 550px">
                   <h3><a href="2025-11-19_Our_laundromat.png">
                       2025-11-19_Our_laundromat.png
                     </a> (374kB)</h3>
@@ -272,7 +292,7 @@ Since I&#39;ve been inside most of the day, I thought I&#39;d share some photos 
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 610px; left: 440px">
                   <h3><a href="2025-11-19_Our_corner_store_Sams.png">
                       2025-11-19_Our_corner_store_Sams.png
                     </a> (418kB)</h3>
@@ -281,7 +301,7 @@ Since I&#39;ve been inside most of the day, I thought I&#39;d share some photos 
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 610px; left: 330px">
                   <h3><a href="2025-11-19_Mr_Kiwi_our_produce_market.png">
                       2025-11-19_Mr_Kiwi_our_produce_market.png
                     </a> (314kB)</h3>
@@ -290,12 +310,12 @@ Since I&#39;ve been inside most of the day, I thought I&#39;d share some photos 
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 610px; left: 220px">
                                 <h3>
                                   2025-11-18..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 610px; left: 110px">
                       <h3><a href="2025-11-18!Suggested_Listening-Boards_of_Canada_Open_The_Light.mp3">
                           2025-11-18!Suggested_Listening-Boards_of_Canada_Open_The_Light.mp3
                         </a> (6.36MB)</h3>
@@ -304,7 +324,7 @@ Since I&#39;ve been inside most of the day, I thought I&#39;d share some photos 
                         Your browser does not support the audio tag.
                       </audio>
             </div>
-            <div class="item">
+            <div class="item" style="top: 610px; left: 0px">
                               <h3><a href="2025-11-18!post.md">
                                   2025-11-18!post.md
                                 </a> (1.49kB)</h3>
@@ -316,7 +336,7 @@ Anyways, Pier 57 is such a cursed place. It&#39;s riddled with VC corporate tech
 Here&#39;s some pictures from my journey there and back!</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 498px; left: 660px">
                   <h3><a href="2025-11-18_My_trains_here.png">
                       2025-11-18_My_trains_here.png
                     </a> (368kB)</h3>
@@ -325,7 +345,7 @@ Here&#39;s some pictures from my journey there and back!</p>
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 498px; left: 550px">
                   <h3><a href="2025-11-18_Cursed_historic_bank_turned_CVS.png">
                       2025-11-18_Cursed_historic_bank_turned_CVS.png
                     </a> (397kB)</h3>
@@ -334,7 +354,7 @@ Here&#39;s some pictures from my journey there and back!</p>
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 498px; left: 440px">
                   <h3><a href="2025-11-18_Corner_of_Chelsea_Market.png">
                       2025-11-18_Corner_of_Chelsea_Market.png
                     </a> (328kB)</h3>
@@ -343,7 +363,7 @@ Here&#39;s some pictures from my journey there and back!</p>
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 498px; left: 330px">
                   <h3><a href="2025-11-18_Boardwalk_up_to_Little_Island_w_The_One_World_Trade_Center_in_the_distance.png">
                       2025-11-18_Boardwalk_up_to_Little_Island_w_The_One_World_Trade_Center_in_the_distance.png
                     </a> (296kB)</h3>
@@ -352,12 +372,12 @@ Here&#39;s some pictures from my journey there and back!</p>
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 498px; left: 220px">
                                 <h3>
                                   2025-11-17..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 498px; left: 110px">
                       <h3><a href="2025-11-17!Suggested_Listening-Phil_Collins_Another_Day_In_Paradise.mp3">
                           2025-11-17!Suggested_Listening-Phil_Collins_Another_Day_In_Paradise.mp3
                         </a> (6.96MB)</h3>
@@ -366,7 +386,7 @@ Here&#39;s some pictures from my journey there and back!</p>
                         Your browser does not support the audio tag.
                       </audio>
             </div>
-            <div class="item">
+            <div class="item" style="top: 498px; left: 0px">
                               <h3><a href="2025-11-17!post.md">
                                   2025-11-17!post.md
                                 </a> (1.23kB)</h3>
@@ -376,7 +396,7 @@ Here&#39;s some pictures from my journey there and back!</p>
 I left feeling very inspired. Afterwards I was listening to &quot;Another Day In Paradise&quot; by Phil Collins while taking photos around me in Bushwick using my <a href="https://sunset-dither-cam.jakewel.ch/">sunset dither cam</a>. I feel so inspired by the images I make with it, it&#39;s been helping change how I see everything around me. Here are some of the photos I took while I was out. Bushwick is so different from where I live in Windsor Terrace, it has a grittiness that I think photographs particularly well. </p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 386px; left: 660px">
                   <h3><a href="2025-11-17_street.jpg">
                       2025-11-17_street.jpg
                     </a> (474kB)</h3>
@@ -385,7 +405,7 @@ I left feeling very inspired. Afterwards I was listening to &quot;Another Day In
                       height="973">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 386px; left: 550px">
                   <h3><a href="2025-11-17_me.png">
                       2025-11-17_me.png
                     </a> (156kB)</h3>
@@ -394,7 +414,7 @@ I left feeling very inspired. Afterwards I was listening to &quot;Another Day In
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 386px; left: 440px">
                   <h3><a href="2025-11-17_garbage_truck.png">
                       2025-11-17_garbage_truck.png
                     </a> (314kB)</h3>
@@ -403,7 +423,7 @@ I left feeling very inspired. Afterwards I was listening to &quot;Another Day In
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 386px; left: 330px">
                   <h3><a href="2025-11-17_deli_under_the_subway.png">
                       2025-11-17_deli_under_the_subway.png
                     </a> (322kB)</h3>
@@ -412,7 +432,7 @@ I left feeling very inspired. Afterwards I was listening to &quot;Another Day In
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 386px; left: 220px">
                   <h3><a href="2025-11-17_bus.png">
                       2025-11-17_bus.png
                     </a> (342kB)</h3>
@@ -421,7 +441,7 @@ I left feeling very inspired. Afterwards I was listening to &quot;Another Day In
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 386px; left: 110px">
                   <h3><a href="2025-11-17_buildling.png">
                       2025-11-17_buildling.png
                     </a> (331kB)</h3>
@@ -430,7 +450,7 @@ I left feeling very inspired. Afterwards I was listening to &quot;Another Day In
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 386px; left: 0px">
                   <h3><a href="2025-11-17_buildling_and_tree.png">
                       2025-11-17_buildling_and_tree.png
                     </a> (312kB)</h3>
@@ -439,12 +459,12 @@ I left feeling very inspired. Afterwards I was listening to &quot;Another Day In
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 274px; left: 660px">
                                 <h3>
                                   2025-11-16..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 274px; left: 550px">
                               <h3><a href="2025-11-16!post.md">
                                   2025-11-16!post.md
                                 </a> (801B)</h3>
@@ -458,7 +478,7 @@ Still, we love going to Front because their selection is such high quality. You 
 find vintage clothes that are in pristine condition and would be hard to find anywhere else.</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 274px; left: 440px">
                   <h3><a href="2025-11-16_Walking_to_the_BK_Flea_in_Dumbo.png">
                       2025-11-16_Walking_to_the_BK_Flea_in_Dumbo.png
                     </a> (253kB)</h3>
@@ -467,7 +487,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1200">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 274px; left: 330px">
                   <h3><a href="2025-11-16_The_Manhattan_skyline.png">
                       2025-11-16_The_Manhattan_skyline.png
                     </a> (257kB)</h3>
@@ -476,7 +496,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1200">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 274px; left: 220px">
                   <h3><a href="2025-11-16_Old_church.png">
                       2025-11-16_Old_church.png
                     </a> (402kB)</h3>
@@ -485,7 +505,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 274px; left: 110px">
                   <h3><a href="2025-11-16_Lovely_street_in_BK_Heights.png">
                       2025-11-16_Lovely_street_in_BK_Heights.png
                     </a> (463kB)</h3>
@@ -494,12 +514,12 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 274px; left: 0px">
                                 <h3>
                                   2025-11-15..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 162px; left: 660px">
                               <h3><a href="2025-11-15!post.md">
                                   2025-11-15!post.md
                                 </a> (197B)</h3>
@@ -507,7 +527,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                                 <p>I&#39;ve started using this <a href="https://sunset-dither-cam.jakewel.ch/" target="_blank">mobile tool</a> that I built to dither my images. Takes an extra step out and makes it more fun and creative!</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 162px; left: 550px">
                   <h3><a href="2025-11-15_You_cant_see_the_hawk_but_its_there.png">
                       2025-11-15_You_cant_see_the_hawk_but_its_there.png
                     </a> (340kB)</h3>
@@ -516,7 +536,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 162px; left: 440px">
                   <h3><a href="2025-11-15_The_leaves_are_almost_gone.png">
                       2025-11-15_The_leaves_are_almost_gone.png
                     </a> (482kB)</h3>
@@ -525,7 +545,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 162px; left: 330px">
                   <h3><a href="2025-11-15_Steph.png">
                       2025-11-15_Steph.png
                     </a> (455kB)</h3>
@@ -534,7 +554,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 162px; left: 220px">
                   <h3><a href="2025-11-15_Pond_on_the_other_side_of_the_dog_beach.png">
                       2025-11-15_Pond_on_the_other_side_of_the_dog_beach.png
                     </a> (385kB)</h3>
@@ -543,7 +563,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1560">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 162px; left: 110px">
                   <h3><a href="2025-11-15_Pizza_for_dinner_last_night_YUM.png">
                       2025-11-15_Pizza_for_dinner_last_night_YUM.png
                     </a> (490kB)</h3>
@@ -552,12 +572,12 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1333">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 162px; left: 0px">
                                 <h3>
                                   2025-11-13..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 660px">
                   <h3><a href="2025-11-13_Foggy_park_the_other_morning.png">
                       2025-11-13_Foggy_park_the_other_morning.png
                     </a> (241kB)</h3>
@@ -566,12 +586,12 @@ find vintage clothes that are in pristine condition and would be hard to find an
                       height="1000">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 550px">
                                 <h3>
                                   2025-11-11..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 440px">
                               <h3><a href="2025-11-11!post.md">
                                   2025-11-11!post.md
                                 </a> (1.04kB)</h3>
@@ -581,7 +601,7 @@ find vintage clothes that are in pristine condition and would be hard to find an
 I just got back from the event–it was so good! Throughout the presentations, there was a strong theme of using the tools used to exploit us to explore the systems they exist in. Challenging AI to reveal biases it was trained on, using surveillance tech for activism, etc. I had so many ideas for projects by the end, and had new questions to explore. An invigorating evening! </p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 330px">
                   <h3><a href="2025-11-11_Amazing_minivan_spotted_outside_Mr_Kiwi_today.png">
                       2025-11-11_Amazing_minivan_spotted_outside_Mr_Kiwi_today.png
                     </a> (523kB)</h3>
@@ -590,12 +610,12 @@ I just got back from the event–it was so good! Throughout the presentations, t
                       height="1249">
                   </a>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 220px">
                                 <h3>
                                   2025-11-10..
                                 </h3>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 110px">
                               <h3><a href="2025-11-10!post.md">
                                   2025-11-10!post.md
                                 </a> (585B)</h3>
@@ -603,7 +623,7 @@ I just got back from the event–it was so good! Throughout the presentations, t
                                 <p>Today I updated my personal website using Kevin Chen&#39;s file-gallery repository. I think it&#39;s fun that the entire site is populated from files and in a folder on my Desktop and that the positions are relative to where the file is literally placed inside that folder. It&#39;s so whacky and creative, and yet simple and effective. My hope is that this format will encourage me to build and share here more often. Pictured are a screenshot of my site inside the folder (note their positions relative to the homepage), and Pepper who was keeping me company and leeching warmth from my laptop.</p>
                               </div>
             </div>
-            <div class="item">
+            <div class="item" style="top: 50px; left: 0px">
                   <h3><a href="2025-11-10_Pepper_helping_me_code.png">
                       2025-11-10_Pepper_helping_me_code.png
                     </a> (879kB)</h3>
@@ -617,7 +637,7 @@ I just got back from the event–it was so good! Throughout the presentations, t
   </main>
 </body>
 <!--
-kevin.garden (formal template) by Kevin Chen, 2023-2025
+kevin.garden (natural template) by Kevin Chen, 2023-2025
 licensed under CC BY-NC 4.0: https://creativecommons.org/licenses/by-nc/4.0/
 please link to https://kevin.garden/ or https://file.gallery/, if possible
 attribution only in the html source is sufficient. non-commercial use only :)
