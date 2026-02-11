@@ -10,9 +10,6 @@ node_modules/
 src/
 views/
 .DS_Store
-watch.sh
-push.sh
-start.sh
 hidden-assets/
 .nojekyll
 html-day-2025-style.css
