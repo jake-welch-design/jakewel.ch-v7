@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-//Modified by Jake Welch (https://jakewel.ch) 
+//Modified by Jake Welch (https://jakewel.ch)
 
 // node defaults
 import path from "path";
@@ -55,7 +55,7 @@ const COMPILED_TEMPLATES = (
       const templatePath = path.join(TEMPLATE_DIR, file);
       const template = ejs.compile(await fs.readFile(templatePath, "utf8"));
       return { file, template };
-    })
+    }),
   )
 ).reduce((acc, { file, template }) => {
   acc[file] = template;
@@ -64,7 +64,12 @@ const COMPILED_TEMPLATES = (
 
 const GITIGNORE = parse(path.join(GARDEN_DIR, ".gitignore")).patterns;
 const GARDENIGNORE = parse(path.join(GARDEN_DIR, ".gardenignore")).patterns;
-const DS_STORE_PARSE = path.join(GARDEN_DIR, "src", "DS_Store-parser", "main.py");
+const DS_STORE_PARSE = path.join(
+  GARDEN_DIR,
+  "src",
+  "DS_Store-parser",
+  "main.py",
+);
 
 const TOP_PADDING_PX_FREEFORM = 50;
 
@@ -120,21 +125,41 @@ function calculateRelativeLuminance(R8bit, G8bit, B8bit) {
   const RsRGB = R8bit / 255;
   const GsRGB = G8bit / 255;
   const BsRGB = B8bit / 255;
-  const R = RsRGB <= 0.03928 ? RsRGB / 12.92 : Math.pow((RsRGB + 0.055) / 1.055, 2.4);
-  const G = GsRGB <= 0.03928 ? GsRGB / 12.92 : Math.pow((GsRGB + 0.055) / 1.055, 2.4);
-  const B = BsRGB <= 0.03928 ? BsRGB / 12.92 : Math.pow((BsRGB + 0.055) / 1.055, 2.4);
+  const R =
+    RsRGB <= 0.03928 ? RsRGB / 12.92 : Math.pow((RsRGB + 0.055) / 1.055, 2.4);
+  const G =
+    GsRGB <= 0.03928 ? GsRGB / 12.92 : Math.pow((GsRGB + 0.055) / 1.055, 2.4);
+  const B =
+    BsRGB <= 0.03928 ? BsRGB / 12.92 : Math.pow((BsRGB + 0.055) / 1.055, 2.4);
   return 0.2126 * R + 0.7152 * G + 0.0722 * B;
 }
 
-async function cultivateDirectory(fileName, dirDS_Store, currPath, relativePath, depth) {
+async function cultivateDirectory(
+  fileName,
+  dirDS_Store,
+  currPath,
+  relativePath,
+  depth,
+) {
   // recurse! also, cultivate() returns directory length
-  const fileCount = await cultivate(currPath, path.join(relativePath, fileName), fileName, dirDS_Store && fileName in dirDS_Store ? dirDS_Store[fileName]["icvp"] : null, depth - 1);
+  const fileCount = await cultivate(
+    currPath,
+    path.join(relativePath, fileName),
+    fileName,
+    dirDS_Store && fileName in dirDS_Store
+      ? dirDS_Store[fileName]["icvp"]
+      : null,
+    depth - 1,
+  );
 
   return {
     path: fileName + "/",
     name: fileName + "/",
     type: "directory",
-    contents: fileCount === 0 ? "empty" : `${fileCount} item` + (fileCount > 1 ? "s" : ""),
+    contents:
+      fileCount === 0
+        ? "empty"
+        : `${fileCount} item` + (fileCount > 1 ? "s" : ""),
   };
 }
 
@@ -147,7 +172,9 @@ async function cultivateFile(fileName, currPath) {
     size: prettyBytes(stats.size, { space: false }),
   };
 
-  const fileExt = fileName.includes(".") ? fileName.split(".").reverse()[0] : "";
+  const fileExt = fileName.includes(".")
+    ? fileName.split(".").reverse()[0]
+    : "";
   switch (fileExt.toLowerCase()) {
     // image
     case "jpeg":
@@ -238,7 +265,13 @@ async function cultivateFile(fileName, currPath) {
 /**
  * :house_with_garden:
  */
-async function cultivate(rootPath, relativePath = ".", currDir = "", icvp = null, depth = 3) {
+async function cultivate(
+  rootPath,
+  relativePath = ".",
+  currDir = "",
+  icvp = null,
+  depth = 3,
+) {
   if (depth < 0) {
     return 0;
   }
@@ -250,14 +283,18 @@ async function cultivate(rootPath, relativePath = ".", currDir = "", icvp = null
   let renderFreeform = false;
 
   if (icvp) {
-    renderFreeform = icvp["arrangeBy"] === "none" || icvp["arrangeBy"] === "grid";
+    renderFreeform =
+      icvp["arrangeBy"] === "none" || icvp["arrangeBy"] === "grid";
 
     // according to wcag 2.0 both background color and text color must be specified together
     if (icvp["bgType"] == 1) {
       // type = 0 : Default, 1: Color, 2: Image
       dirData.backgroundColor = `rgb(${icvp["bgR"]}, ${icvp["bgG"]}, ${icvp["bgB"]})`;
       // pick white or black text color based on contrast w/ background color
-      if (calculateRelativeLuminance(icvp["bgR"], icvp["bgG"], icvp["bgB"]) <= 0.1791) {
+      if (
+        calculateRelativeLuminance(icvp["bgR"], icvp["bgG"], icvp["bgB"]) <=
+        0.1791
+      ) {
         dirData.textColor = "white";
       } else {
         dirData.textColor = "black";
@@ -284,12 +321,20 @@ async function cultivate(rootPath, relativePath = ".", currDir = "", icvp = null
   for (const fileEntry of allFileEntries) {
     const fileName = fileEntry.name;
     if (fileEntry.isDirectory()) {
-      if (micromatch.isMatch(fileName, GITIGNORE) || micromatch.isMatch(fileName, GARDENIGNORE) || micromatch.isMatch(fileName + "/", GITIGNORE) || micromatch.isMatch(fileName + "/", GARDENIGNORE)) {
+      if (
+        micromatch.isMatch(fileName, GITIGNORE) ||
+        micromatch.isMatch(fileName, GARDENIGNORE) ||
+        micromatch.isMatch(fileName + "/", GITIGNORE) ||
+        micromatch.isMatch(fileName + "/", GARDENIGNORE)
+      ) {
         continue;
       }
       directoriesToProcess.push(fileName);
     } else if (fileEntry.isFile()) {
-      if (micromatch.isMatch(fileName, GITIGNORE) || micromatch.isMatch(fileName, GARDENIGNORE)) {
+      if (
+        micromatch.isMatch(fileName, GITIGNORE) ||
+        micromatch.isMatch(fileName, GARDENIGNORE)
+      ) {
         continue;
       }
       filesToProcess.push(fileName);
@@ -299,32 +344,51 @@ async function cultivate(rootPath, relativePath = ".", currDir = "", icvp = null
   // process them all asynchronously
   let processedFiles = await Promise.all([
     ...directoriesToProcess.map(async (directoryName) => {
-      const fileInfo = await cultivateDirectory(directoryName, dirDS_Store, currPath, relativePath, depth);
-      if (renderFreeform && dirDS_Store && directoryName in dirDS_Store && "Iloc" in dirDS_Store[directoryName]) {
+      const fileInfo = await cultivateDirectory(
+        directoryName,
+        dirDS_Store,
+        currPath,
+        relativePath,
+        depth,
+      );
+      if (
+        renderFreeform &&
+        dirDS_Store &&
+        directoryName in dirDS_Store &&
+        "Iloc" in dirDS_Store[directoryName]
+      ) {
         fileInfo.location = dirDS_Store[directoryName].Iloc;
       }
       return fileInfo;
     }),
     ...filesToProcess.map(async (fileName) => {
       const fileInfo = await cultivateFile(fileName, currPath);
-      if (renderFreeform && dirDS_Store && fileName in dirDS_Store && "Iloc" in dirDS_Store[fileName]) {
+      if (
+        renderFreeform &&
+        dirDS_Store &&
+        fileName in dirDS_Store &&
+        "Iloc" in dirDS_Store[fileName]
+      ) {
         fileInfo.location = dirDS_Store[fileName].Iloc;
       }
       return fileInfo;
     }),
   ]);
-  
+
   // Sort files - descending for life-lately, ascending for others
   processedFiles.sort((a, b) => {
-    if (currDir === "life-lately") {
+    if (currDir === "my-life-lately") {
       return b.name.localeCompare(a.name); // descending
     }
     return a.name.localeCompare(b.name); // ascending
   });
-  
+
   dirData.files = processedFiles;
 
-  if (renderFreeform && !dirData.files.every((fileInfo) => "location" in fileInfo)) {
+  if (
+    renderFreeform &&
+    !dirData.files.every((fileInfo) => "location" in fileInfo)
+  ) {
     renderFreeform = false;
   }
   const processedFileCount = dirData.files.length;
@@ -347,15 +411,27 @@ async function cultivate(rootPath, relativePath = ".", currDir = "", icvp = null
   }
 
   // generate html file from associated template
-  const html = COMPILED_TEMPLATES[renderFreeform ? "natural.ejs" : "formal.ejs"](dirData);
+  const html =
+    COMPILED_TEMPLATES[renderFreeform ? "natural.ejs" : "formal.ejs"](dirData);
   const outputPath = path.join(currPath, "index.html");
 
   // plant html file
   if (processedFileCount > 0) {
     try {
-      console.log("Read", processedFileCount, "of", allFileEntries.length, "files from", relativePath);
+      console.log(
+        "Read",
+        processedFileCount,
+        "of",
+        allFileEntries.length,
+        "files from",
+        relativePath,
+      );
       await fs.writeFile(outputPath, html);
-      console.log("\tPlanted", path.join(relativePath, "index.html"), `(${renderFreeform ? "natural" : "formal"})`);
+      console.log(
+        "\tPlanted",
+        path.join(relativePath, "index.html"),
+        `(${renderFreeform ? "natural" : "formal"})`,
+      );
     } catch (err) {
       console.log(`Could not plant ${outputPath}, skipping. Error:\n\t${err}`);
     }
@@ -388,7 +464,10 @@ async function cultivateHelper(root) {
   await cultivate(root, ".", "", icvp);
 }
 
-const usage = "how do we turn a directory into a garden?\n" + "usage:      node cultivate.js DIR\n" + "options:    -h, --help       print help";
+const usage =
+  "how do we turn a directory into a garden?\n" +
+  "usage:      node cultivate.js DIR\n" +
+  "options:    -h, --help       print help";
 
 if (process.argv.includes("-h") || process.argv.includes("--help")) {
   console.log(usage);
