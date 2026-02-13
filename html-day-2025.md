@@ -1,1 +1,1 @@
-<h1><a href="https://jakewel.ch/html-day-2025.html" target="_blank" style="color: #00ff00; text-shadow: 0 0 20px #00FF00; text-decoration: none; font-size: 2rem">&nbsp;&nbsp;&nbsp;✺</a></h1>
+  <h1><a href="https://jakewel.ch/html-day-2025.html" target="_blank" style="color: #00ff00; text-shadow: 0 0 10px #00FF00; text-decoration: none; font-size: 2rem">&nbsp;&nbsp;&nbsp;✺</a></h1>
