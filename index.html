@@ -255,7 +255,7 @@ Images have been <a href="https://en.wikipedia.org/wiki/Dither">dithered</a> wit
             <div class="item" style="top: 133px; left: 10px">
                               <h3><a href="bio.md">
                                   bio.md
-                                </a> (2.95kB)</h3>
+                                </a> (2.66kB)</h3>
                               <div class="md">
                                 <p>Hi! I&#39;m Jake and I&#39;m <span class="what-am-i"></span> from <a href="https://maps.app.goo.gl/znExp4xj4njYNqs5A" target="_blank">Salt Lake City, UT</a> currently living in <a href="https://maps.app.goo.gl/MMfmNDXtF19uJNqSA" target="_blank">Brooklyn, NY</a>.
 I use code to <a href="https://jakewelch.design" target="_blank">design cool projects</a> and to <a href="https://instagram.com/jake___welch" target="_blank">experiment with new ideas</a>.
@@ -290,6 +290,15 @@ text-align: center;
             "a ponderer",
             "a daydreamer",
             "a programmer",
+        "a luddite",
+        "a park enjoyer",
+        "a writer",
+        "a reader", 
+        "a web surfer",
+        "a history buff",
+        "an archivist",
+        "a documentarian",
+        "a friend",
         ];
         let index = 0;
         const span = document.querySelector('.what-am-i');
@@ -297,16 +306,6 @@ text-align: center;
             span.textContent = words[index];
             index = (index + 1) % words.length;
         }, 500);
-
-        // Set active nav item
-        const pathname = window.location.pathname;
-        if (pathname === '/' || pathname === '/index.html') {
-            document.querySelector('.home').classList.add('active');
-        } else if (pathname === '/images.html') {
-            document.querySelector('.images').classList.add('active');
-        } else if (pathname === '/experiments.html') {
-            document.querySelector('.experiments').classList.add('active');
-        }
     </script>
                               </div>
             </div>

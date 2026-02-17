@@ -32,6 +32,15 @@ text-align: center;
             "a ponderer",
             "a daydreamer",
             "a programmer",
+	    "a luddite",
+	    "a park enjoyer",
+	    "a writer",
+	    "a reader", 
+	    "a web surfer",
+	    "a history buff",
+	    "an archivist",
+	    "a documentarian",
+	    "a friend",
         ];
         let index = 0;
         const span = document.querySelector('.what-am-i');
@@ -39,14 +48,4 @@ text-align: center;
             span.textContent = words[index];
             index = (index + 1) % words.length;
         }, 500);
-
-        // Set active nav item
-        const pathname = window.location.pathname;
-        if (pathname === '/' || pathname === '/index.html') {
-            document.querySelector('.home').classList.add('active');
-        } else if (pathname === '/images.html') {
-            document.querySelector('.images').classList.add('active');
-        } else if (pathname === '/experiments.html') {
-            document.querySelector('.experiments').classList.add('active');
-        }
     </script>
