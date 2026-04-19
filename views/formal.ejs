@@ -128,11 +128,106 @@
       margin-top: 1em;
       /* max-width: 30em; */
     }
+
+    .signup {
+      float: right;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.25em;
+      padding-left: 0.6em;
+      border: 1px solid black;
+      background: white;
+    }
+
+    .signup label {
+      margin: 0;
+    }
+    .signup input[type="email"] {
+      font-family: inherit;
+      font-size: inherit;
+      border: 1px solid black;
+      background: white;
+      padding: 0.25em 0.5em;
+      width: 10em;
+    }
+    .signup button,
+    .comments button {
+      font-family: inherit;
+      font-size: inherit;
+      border: 1px solid black;
+      background: white;
+      padding: 0.25em 0.5em;
+      cursor: pointer;
+    }
+    .signup button:hover,
+    .comments button:hover { background: #eee; }
+    .signup .msg { margin-left: 0.5em; color: gray; }
+
+    .comments {
+      margin-top: 0.75em;
+      margin-bottom: 1em;
+      border-top: 1px dashed rgba(0,0,0,0.4);
+      padding-top: 0.5em;
+    }
+    .comments summary {
+      cursor: pointer;
+      color: gray;
+      list-style: none;
+      user-select: none;
+    }
+    .comments summary::-webkit-details-marker { display: none; }
+    .comments summary::before { content: "▸ "; }
+    .comments[open] > summary::before { content: "▾ "; }
+
+    .comments .list { margin: 0.5em 0; }
+    .comments .entry {
+      border-top: 1px dashed rgba(0,0,0,0.3);
+      padding: 0.4em 0;
+    }
+    .comments .entry:first-child { border-top: none; }
+    .comments .entry .who { font-weight: bold; color: #e05030; }
+    .comments .entry .when { color: gray; margin-left: 0.5em; }
+    .comments .entry .what {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-top: 0.2em;
+    }
+
+    .comments form { display: grid; gap: 0.25em; margin-top: 0.5em; }
+    .comments form input[type="text"],
+    .comments form textarea {
+      font-family: inherit;
+      font-size: inherit;
+      border: 1px solid black;
+      background: white;
+      padding: 0.25em 0.5em;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .comments form textarea { min-height: 3em; resize: vertical; }
+    .comments form .row { display: flex; gap: 0.5em; align-items: center; }
+    .comments .msg { color: gray; }
+    .comments .empty { color: gray; font-style: italic; }
+
+    .turnstile-slot { margin-top: 0.5em; min-height: 0; }
+    .turnstile-slot:empty { display: none; }
+    .signup .turnstile-slot { display: block; margin-top: 0.5em; }
   </style>
 </head>
 
 <body>
   <main>
+    <%_ if (locals.isMyLifeLately) { _%>
+    <form class="signup" id="signup-form" autocomplete="off">
+      <label>Sign up to be notified when I post</label>
+      <input type="email" name="email" required placeholder="you@example.com">
+      <button type="submit">send</button>
+      <span class="msg" id="signup-msg"></span>
+      <div class="turnstile-slot"></div>
+    </form>
+    <% } _%>
+
     <%_ if (locals.title && title) { _%>
       <h3 style="padding: 0.25em; background: white; border: 1px solid black; display: inline-block;"><a
           href="..">back</a></h3>
@@ -198,9 +293,240 @@
                                           <%= file.name %>
                                         </a> (<%= file.size %>)</h3>
                                       <%_ } _%>
+
+              <%_ if (locals.isMyLifeLately && file.type !== 'directory' && !file.name.endsWith('..')) { _%>
+              <details class="comments" data-item="<%= file.name %>">
+                <summary>comments (<span class="count">…</span>)</summary>
+                <div class="list"></div>
+                <form autocomplete="off">
+                  <div class="row">
+                    <span>name:</span>
+                    <input type="text" name="name" required maxlength="60">
+                  </div>
+                  <div class="row">
+                    <span>comment:</span>
+                    <textarea name="body" required maxlength="2000"></textarea>
+                  </div>
+                  <div class="row">
+                    <button type="submit">submit</button>
+                    <span class="msg"></span>
+                  </div>
+                  <div class="turnstile-slot"></div>
+                </form>
+              </details>
+              <%_ } _%>
             </div>
             <%_ }) _%>
         </div>
+
+    <%_ if (locals.isMyLifeLately) { _%>
+    <script>
+      (function () {
+        // --- CONFIG ---------------------------------------------------------
+        // Replace with your deployed Worker URL and Turnstile site key.
+        const API_BASE = "https://jakewelch-api.jakewelch.workers.dev";
+        const TURNSTILE_SITE_KEY = "0x4AAAAAAC_x1n7Jy1i8HU_Y"; // leave "" to disable Turnstile client-side
+        // --------------------------------------------------------------------
+
+        const turnstileReady = new Promise((resolve) => {
+          if (!TURNSTILE_SITE_KEY) { resolve(false); return; }
+          window.__onTurnstileLoad = () => resolve(true);
+          const s = document.createElement("script");
+          s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=__onTurnstileLoad&render=explicit";
+          s.async = true;
+          s.defer = true;
+          s.onerror = () => resolve(false);
+          document.head.appendChild(s);
+        });
+
+        const widgetIds = new WeakMap();
+        async function mountTurnstile(slotEl) {
+          if (!slotEl || widgetIds.has(slotEl)) return;
+          const ready = await turnstileReady;
+          if (!ready || !window.turnstile) return;
+          const id = window.turnstile.render(slotEl, {
+            sitekey: TURNSTILE_SITE_KEY,
+            size: "flexible",
+            theme: "light",
+          });
+          widgetIds.set(slotEl, id);
+        }
+
+        async function getTurnstileToken(slotEl) {
+          if (!TURNSTILE_SITE_KEY) return "";
+          await mountTurnstile(slotEl);
+          const id = widgetIds.get(slotEl);
+          if (!id || !window.turnstile) return "";
+          const existing = window.turnstile.getResponse(id);
+          if (existing) return existing;
+          return new Promise((resolve) => {
+            const start = Date.now();
+            const poll = setInterval(() => {
+              const token = window.turnstile.getResponse(id);
+              if (token) { clearInterval(poll); resolve(token); }
+              else if (Date.now() - start > 15000) { clearInterval(poll); resolve(""); }
+            }, 200);
+          });
+        }
+
+        function resetTurnstile(slotEl) {
+          const id = widgetIds.get(slotEl);
+          if (id && window.turnstile) window.turnstile.reset(id);
+        }
+
+        function formatDate(ms) {
+          return new Date(ms).toISOString().slice(0, 10);
+        }
+
+        function escapeHtml(s) {
+          return s.replace(/[&<>"']/g, (c) => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+          }[c]));
+        }
+
+        function renderComments(listEl, comments) {
+          if (!comments.length) {
+            listEl.innerHTML = '<div class="empty">no comments yet.</div>';
+            return;
+          }
+          listEl.innerHTML = comments.map((c) =>
+            '<div class="entry">' +
+              '<span class="who">' + escapeHtml(c.name) + '</span>' +
+              '<span class="when">' + formatDate(c.created_at) + '</span>' +
+              '<div class="what">' + escapeHtml(c.body) + '</div>' +
+            '</div>'
+          ).join("");
+        }
+
+        async function loadComments(details) {
+          const item = details.dataset.item;
+          const listEl = details.querySelector(".list");
+          const countEl = details.querySelector(".count");
+          listEl.innerHTML = '<div class="msg">loading…</div>';
+          try {
+            const resp = await fetch(
+              API_BASE + "/comments?item=" + encodeURIComponent(item)
+            );
+            const data = await resp.json();
+            const comments = data.comments || [];
+            renderComments(listEl, comments);
+            countEl.textContent = comments.length;
+            details.dataset.loaded = "1";
+          } catch (err) {
+            listEl.innerHTML = '<div class="msg">failed to load.</div>';
+          }
+        }
+
+        const allDetails = document.querySelectorAll("details.comments");
+        const countByItem = new Map();
+        for (const d of allDetails) countByItem.set(d.dataset.item, d);
+
+        fetch(API_BASE + "/comments/counts")
+          .then((r) => {
+            if (!r.ok) throw new Error("counts endpoint not available");
+            return r.json();
+          })
+          .then((data) => {
+            if (!data || !data.counts) throw new Error("bad response");
+            for (const d of allDetails) {
+              const n = data.counts[d.dataset.item] || 0;
+              d.querySelector(".count").textContent = n;
+            }
+          })
+          .catch(() => {
+            for (const d of allDetails) d.querySelector(".count").textContent = "?";
+          });
+
+        allDetails.forEach((details) => {
+          const form = details.querySelector("form");
+          const slot = form.querySelector(".turnstile-slot");
+          const msg = form.querySelector(".msg");
+
+          details.addEventListener("toggle", () => {
+            if (details.open) {
+              if (!details.dataset.loaded) loadComments(details);
+              mountTurnstile(slot);
+            }
+          });
+
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = form.name.value.trim();
+            const body = form.body.value.trim();
+            if (!name || !body) return;
+            msg.textContent = "verifying…";
+            const submitBtn = form.querySelector("button");
+            submitBtn.disabled = true;
+            try {
+              const turnstileToken = await getTurnstileToken(slot);
+              if (TURNSTILE_SITE_KEY && !turnstileToken) {
+                throw new Error("please complete the verification");
+              }
+              msg.textContent = "sending…";
+              const resp = await fetch(API_BASE + "/comments", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  item: details.dataset.item,
+                  name, body, turnstileToken,
+                }),
+              });
+              const data = await resp.json();
+              if (!resp.ok) throw new Error(data.error || "failed");
+              form.reset();
+              msg.textContent = "posted.";
+              details.dataset.loaded = "";
+              await loadComments(details);
+            } catch (err) {
+              msg.textContent = err.message || "failed.";
+            } finally {
+              resetTurnstile(slot);
+              submitBtn.disabled = false;
+            }
+          });
+        });
+
+        const signup = document.getElementById("signup-form");
+        if (signup) {
+          const msg = document.getElementById("signup-msg");
+          const slot = signup.querySelector(".turnstile-slot");
+          mountTurnstile(slot);
+
+          signup.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = signup.email.value.trim();
+            if (!email) return;
+            msg.textContent = "verifying…";
+            const btn = signup.querySelector("button");
+            btn.disabled = true;
+            try {
+              const turnstileToken = await getTurnstileToken(slot);
+              if (TURNSTILE_SITE_KEY && !turnstileToken) {
+                throw new Error("please complete the verification");
+              }
+              msg.textContent = "sending…";
+              const resp = await fetch(API_BASE + "/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, turnstileToken }),
+              });
+              const data = await resp.json();
+              if (!resp.ok) throw new Error(data.error || "failed");
+              signup.reset();
+              msg.textContent = data.status === "already_subscribed"
+                ? "already subscribed."
+                : "added successfully!";
+            } catch (err) {
+              msg.textContent = err.message || "failed.";
+            } finally {
+              resetTurnstile(slot);
+              btn.disabled = false;
+            }
+          });
+        }
+      })();
+    </script>
+    <% } _%>
 
   </main>
 </body>

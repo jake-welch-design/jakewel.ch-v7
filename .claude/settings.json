@@ -7,7 +7,11 @@
       "Bash(curl -s \"https://api.are.na/v2/channels/my-life-lately-backup\")",
       "Bash(curl -s -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://api.are.na/v2/channels/my-life-lately-backup\")",
       "Read(//Users/jakewelch/Desktop/jakewel.ch/**)",
-      "Bash(node -e ':*)"
+      "Bash(node -e ':*)",
+      "Bash(npm run *)",
+      "Bash(grep -E '\\\\.\\\\.$')",
+      "Bash(chmod +x /Users/jakewelch/Desktop/jakewel.ch/push.sh)",
+      "Bash(node -e \"import\\('./scripts/email-template.js'\\).then\\(m => { const items = [{name:'2026-04-16..', type:'separator'},{name:'2026-04-16!post.md',type:'markdown',contents:'hello **world**'},{name:'2026-04-16_Home_in_NYC_in_time_for_Spring.PNG',type:'image'},{name:'2026-04-14..',type:'separator'},{name:'2026-04-14_Childhood_home.PNG',type:'image'}]; console.log\\('SUBJECT:', m.buildSubject\\(items\\)\\); console.log\\('---TEXT---'\\); console.log\\(m.renderEmailText\\(items\\)\\); console.log\\('---HTML \\(first 400 chars\\)---'\\); console.log\\(m.renderEmailHtml\\(items\\).slice\\(0,400\\)\\); }\\)\")"
     ],
     "additionalDirectories": [
       "/Users/jakewelch"

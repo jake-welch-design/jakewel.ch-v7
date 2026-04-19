@@ -278,6 +278,7 @@ async function cultivate(
 
   const dirData = {
     title: relativePath != "." ? relativePath + "/" : "",
+    isMyLifeLately: currDir === "my-life-lately",
   };
 
   let renderFreeform = false;

@@ -1,0 +1,14 @@
+name = "jakewelch-api"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jakewelch-site"
+database_id = "a305d150-a952-461c-ada5-e3318eb8259e"
+
+[vars]
+ALLOWED_ORIGINS = "https://jakewel.ch,https://www.jakewel.ch,http://localhost:8000,http://127.0.0.1:8000"
+FROM_EMAIL = "mail@jakewel.ch"
+FROM_NAME = "jakewel.ch"
+ADMIN_TOKEN = "8PrSGZVTr5y0KC3HKRH5qL-nEnxfDa8NwyQJngZv4T4"

@@ -122,11 +122,97 @@ overflow: auto;
       margin-top: 1em;
       /* max-width: 30em; */
     }
+
+    .signup {
+      float: right;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.25em;
+      padding-left: 0.6em;
+      border: 1px solid black;
+      background: white;
+    }
+
+    .signup label {
+      margin: 0;
+    }
+    .signup input[type="email"] {
+      font-family: inherit;
+      font-size: inherit;
+      border: 1px solid black;
+      background: white;
+      padding: 0.25em 0.5em;
+      width: 10em;
+    }
+    .signup button,
+    .comments button {
+      font-family: inherit;
+      font-size: inherit;
+      border: 1px solid black;
+      background: white;
+      padding: 0.25em 0.5em;
+      cursor: pointer;
+    }
+    .signup button:hover,
+    .comments button:hover { background: #eee; }
+    .signup .msg { margin-left: 0.5em; color: gray; }
+
+    .comments {
+      margin-top: 0.75em;
+      margin-bottom: 1em;
+      border-top: 1px dashed rgba(0,0,0,0.4);
+      padding-top: 0.5em;
+    }
+    .comments summary {
+      cursor: pointer;
+      color: gray;
+      list-style: none;
+      user-select: none;
+    }
+    .comments summary::-webkit-details-marker { display: none; }
+    .comments summary::before { content: "▸ "; }
+    .comments[open] > summary::before { content: "▾ "; }
+
+    .comments .list { margin: 0.5em 0; }
+    .comments .entry {
+      border-top: 1px dashed rgba(0,0,0,0.3);
+      padding: 0.4em 0;
+    }
+    .comments .entry:first-child { border-top: none; }
+    .comments .entry .who { font-weight: bold; color: #e05030; }
+    .comments .entry .when { color: gray; margin-left: 0.5em; }
+    .comments .entry .what {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-top: 0.2em;
+    }
+
+    .comments form { display: grid; gap: 0.25em; margin-top: 0.5em; }
+    .comments form input[type="text"],
+    .comments form textarea {
+      font-family: inherit;
+      font-size: inherit;
+      border: 1px solid black;
+      background: white;
+      padding: 0.25em 0.5em;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .comments form textarea { min-height: 3em; resize: vertical; }
+    .comments form .row { display: flex; gap: 0.5em; align-items: center; }
+    .comments .msg { color: gray; }
+    .comments .empty { color: gray; font-style: italic; }
+
+    .turnstile-slot { margin-top: 0.5em; min-height: 0; }
+    .turnstile-slot:empty { display: none; }
+    .signup .turnstile-slot { display: block; margin-top: 0.5em; }
   </style>
 </head>
 
 <body>
   <main>
+
       <h3 style="padding: 0.25em; background: white; border: 1px solid black; display: inline-block;"><a
           href="..">back</a></h3>
       <p style="padding: 0.25em; background: white; border: 1px solid black; display: inline-block">
@@ -141,6 +227,7 @@ overflow: auto;
                               <div class="md">
                                 <p>Some of my favorite images from tools I&#39;ve built.</p>
                               </div>
+
             </div>
             <div class="item">
                   <h3><a href="001.jpg">
@@ -150,6 +237,7 @@ overflow: auto;
                     <img src="001.jpg" alt="001.jpg" width="768"
                       height="1024">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="002.jpg">
@@ -159,6 +247,7 @@ overflow: auto;
                     <img src="002.jpg" alt="002.jpg" width="665"
                       height="1182">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="003.jpg">
@@ -168,6 +257,7 @@ overflow: auto;
                     <img src="003.jpg" alt="003.jpg" width="768"
                       height="1024">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="004.jpg">
@@ -177,6 +267,7 @@ overflow: auto;
                     <img src="004.jpg" alt="004.jpg" width="665"
                       height="1182">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="005.jpg">
@@ -186,6 +277,7 @@ overflow: auto;
                     <img src="005.jpg" alt="005.jpg" width="665"
                       height="1182">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="006.jpg">
@@ -195,6 +287,7 @@ overflow: auto;
                     <img src="006.jpg" alt="006.jpg" width="768"
                       height="1024">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="007.jpg">
@@ -204,6 +297,7 @@ overflow: auto;
                     <img src="007.jpg" alt="007.jpg" width="768"
                       height="1024">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="008.jpg">
@@ -213,6 +307,7 @@ overflow: auto;
                     <img src="008.jpg" alt="008.jpg" width="768"
                       height="1024">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="009.jpg">
@@ -222,6 +317,7 @@ overflow: auto;
                     <img src="009.jpg" alt="009.jpg" width="665"
                       height="1182">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="010.jpg">
@@ -231,6 +327,7 @@ overflow: auto;
                     <img src="010.jpg" alt="010.jpg" width="665"
                       height="1182">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="011.jpg">
@@ -240,6 +337,7 @@ overflow: auto;
                     <img src="011.jpg" alt="011.jpg" width="2000"
                       height="3000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="012.jpg">
@@ -249,6 +347,7 @@ overflow: auto;
                     <img src="012.jpg" alt="012.jpg" width="2000"
                       height="3000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="013.jpg">
@@ -258,6 +357,7 @@ overflow: auto;
                     <img src="013.jpg" alt="013.jpg" width="800"
                       height="1000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="014.jpg">
@@ -267,6 +367,7 @@ overflow: auto;
                     <img src="014.jpg" alt="014.jpg" width="3000"
                       height="2000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="015.jpg">
@@ -276,6 +377,7 @@ overflow: auto;
                     <img src="015.jpg" alt="015.jpg" width="5196"
                       height="2835">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="016.jpg">
@@ -285,6 +387,7 @@ overflow: auto;
                     <img src="016.jpg" alt="016.jpg" width="1078"
                       height="1236">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="017.jpg">
@@ -294,6 +397,7 @@ overflow: auto;
                     <img src="017.jpg" alt="017.jpg" width="1078"
                       height="1236">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="018.jpg">
@@ -303,6 +407,7 @@ overflow: auto;
                     <img src="018.jpg" alt="018.jpg" width="1078"
                       height="1236">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="019.jpg">
@@ -312,6 +417,7 @@ overflow: auto;
                     <img src="019.jpg" alt="019.jpg" width="2000"
                       height="3000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="020.jpg">
@@ -321,6 +427,7 @@ overflow: auto;
                     <img src="020.jpg" alt="020.jpg" width="3000"
                       height="2000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="021.jpg">
@@ -330,6 +437,7 @@ overflow: auto;
                     <img src="021.jpg" alt="021.jpg" width="2000"
                       height="3000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="022.jpg">
@@ -339,6 +447,7 @@ overflow: auto;
                     <img src="022.jpg" alt="022.jpg" width="2160"
                       height="2700">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="023.jpg">
@@ -348,6 +457,7 @@ overflow: auto;
                     <img src="023.jpg" alt="023.jpg" width="800"
                       height="1000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="025.jpg">
@@ -357,6 +467,7 @@ overflow: auto;
                     <img src="025.jpg" alt="025.jpg" width="1500"
                       height="1000">
                   </a>
+
             </div>
             <div class="item">
                   <h3><a href="027.jpg">
@@ -366,8 +477,10 @@ overflow: auto;
                     <img src="027.jpg" alt="027.jpg" width="800"
                       height="1000">
                   </a>
+
             </div>
         </div>
+
 
   </main>
 </body>
