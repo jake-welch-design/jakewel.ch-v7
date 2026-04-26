@@ -206,7 +206,7 @@ async function postNotify(request, env) {
       });
     }
 
-    await new Promise(r => setTimeout(r, 250));
+    await new Promise((r) => setTimeout(r, 1000));
   }
 
   return { ok: true, total: subscribers.length, sent, failures };
