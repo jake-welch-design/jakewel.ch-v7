@@ -95,7 +95,20 @@ async function main() {
     return;
   }
 
-  const names = listNewItems(last, head);
+  let names;
+  if (targetEmails.length > 0 && last === head) {
+    // When resending to specific emails, use items from the last notified commit
+    // Get items from the commit before last to last
+    try {
+      const beforeLast = sh(`git rev-parse ${last}~1`);
+      names = listNewItems(beforeLast, last);
+    } catch {
+      names = [];
+    }
+  } else {
+    names = listNewItems(last, head);
+  }
+
   if (names.length === 0 && targetEmails.length === 0) {
     console.log(
       "no new my-life-lately items since last notification. skipping.",
