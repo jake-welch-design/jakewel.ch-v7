@@ -1,5 +1,10 @@
 import { marked } from "marked";
 
+marked.setOptions({
+  mangle: false,
+  headerIds: false,
+});
+
 const SITE_URL = "https://jakewel.ch";
 const BG_IMAGE = `${SITE_URL}/hidden-assets/bg-summer.png`;
 const BG_FALLBACK = "#acc3aa";
