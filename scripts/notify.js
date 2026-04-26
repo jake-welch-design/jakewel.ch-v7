@@ -84,16 +84,19 @@ async function main() {
     process.exit(1);
   }
 
+  // Check for command-line args specifying which emails to send to
+  const targetEmails = process.argv.slice(2).map((e) => e.toLowerCase());
+
   const head = currentHeadSha();
   const last = readLastNotifiedSha();
 
-  if (last === head) {
+  if (last === head && targetEmails.length === 0) {
     console.log("already notified for this commit. nothing to do.");
     return;
   }
 
   const names = listNewItems(last, head);
-  if (names.length === 0) {
+  if (names.length === 0 && targetEmails.length === 0) {
     console.log(
       "no new my-life-lately items since last notification. skipping.",
     );
@@ -103,7 +106,7 @@ async function main() {
 
   const items = loadItems(names);
   const contentCount = items.filter((i) => i.type !== "separator").length;
-  if (contentCount === 0) {
+  if (contentCount === 0 && targetEmails.length === 0) {
     console.log(
       "only date separators changed. skipping send, but updating baseline.",
     );
@@ -111,7 +114,11 @@ async function main() {
     return;
   }
 
-  const subject = buildSubject(items);
+  let subject = buildSubject(items);
+  // When resending to specific emails, use a resend subject if no new items
+  if (targetEmails.length > 0 && !subject) {
+    subject = "jakewel.ch - Resend";
+  }
   const html = renderEmailHtml(items);
   const text = renderEmailText(items);
 
@@ -122,13 +129,23 @@ async function main() {
   for (const item of items)
     console.log(`  ${item.type.padEnd(10)} ${item.name}`);
 
+  if (targetEmails.length > 0) {
+    console.log(`\nresending to ${targetEmails.length} specific email(s):`);
+    targetEmails.forEach((e) => console.log(`  - ${e}`));
+  }
+
   const resp = await fetch(`${WORKER_URL}/notify`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${ADMIN_TOKEN}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ subject, html, text }),
+    body: JSON.stringify({
+      subject,
+      html,
+      text,
+      ...(targetEmails.length > 0 && { emails: targetEmails }),
+    }),
   });
 
   const result = await resp.json().catch(() => ({}));
@@ -140,7 +157,9 @@ async function main() {
   if (result.failures?.length) {
     console.warn("failures:", result.failures);
   }
-  writeLastNotifiedSha(head);
+  if (targetEmails.length === 0) {
+    writeLastNotifiedSha(head);
+  }
 }
 
 main().catch((err) => {

@@ -151,7 +151,15 @@ async function postNotify(request, env) {
   const { results } = await env.DB.prepare(
     "SELECT id, email, unsubscribe_token FROM subscribers",
   ).all();
-  const subscribers = results || [];
+  let subscribers = results || [];
+
+  // Filter to specific emails if provided
+  if (Array.isArray(data.emails) && data.emails.length > 0) {
+    const emailSet = new Set(data.emails.map((e) => e.toLowerCase()));
+    subscribers = subscribers.filter((sub) =>
+      emailSet.has(sub.email.toLowerCase()),
+    );
+  }
 
   let sent = 0;
   const failures = [];
