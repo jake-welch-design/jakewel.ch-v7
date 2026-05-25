@@ -1,1 +1,1 @@
-<a href="https://www.goodreads.com/jakewelch" style="text-decoration: none"><img src="hidden-assets/goodreads.gif" style="width: 65px"></a>
+<a href="https://www.goodreads.com/jakewelch" style="text-decoration: none" target="_blank"><img src="hidden-assets/goodreads.gif" style="width: 65px"></a>

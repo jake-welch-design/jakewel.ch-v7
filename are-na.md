@@ -21,7 +21,7 @@
 </style>
 
 <a href="https://www.are.na/jake-welch/channels"
-   style="text-decoration: none; font-size: 3rem; color: black">
+   style="text-decoration: none; font-size: 3rem; color: black" target="_blank">
   <span class="stars">
     <span class="spin">✶</span><span class="spin">✶</span>
   </span>

@@ -1,3 +1,3 @@
-Listen to <a href="https://nts.live"><img src="hidden-assets/nts.jpg" style="width:25px;vertical-align:middle"></a> while you visit!
+Listen to <a href="https://nts.live" target="_blank"><img src="hidden-assets/nts.jpg" style="width:25px;vertical-align:middle"></a> while you visit!
 <br><br>
 <span style="background:black;color:white;padding:4px 8px;margin-right:8px">Radio 1 <button onclick="var a=this.nextElementSibling;a.paused?a.play():a.pause();this.textContent=a.paused?'▶':'■'" style="background:none;border:none;color:white;cursor:pointer">▶</button><audio src="https://audio-edge-vqwx4.yyz.g.radiomast.io/nts1"></audio></span><span style="background:black;color:white;padding:4px 8px">Radio 2 <button onclick="var a=this.nextElementSibling;a.paused?a.play():a.pause();this.textContent=a.paused?'▶':'■'" style="background:none;border:none;color:white;cursor:pointer">▶</button><audio src="https://audio-edge-n9hx8.yul.o.radiomast.io/nts2"></audio></span>
