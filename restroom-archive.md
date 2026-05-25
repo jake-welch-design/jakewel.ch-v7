@@ -1,3 +1,0 @@
-<!-- [RestroomArchive.com](https://RestroomArchive.com) -->
-<a href="https://RestroomArchive.com" target="_blank" style="text-decoration: none">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🚽🗄️</a>

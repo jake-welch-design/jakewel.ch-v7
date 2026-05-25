@@ -1,0 +1,1 @@
+<a href="https://ourworldoftext.com/jakewelch" target="_blank"><img src="hidden-assets/guestbook.gif" style="width: 95px;"></a>.

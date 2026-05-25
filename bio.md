@@ -2,12 +2,11 @@ Hi! I'm Jake and I'm <span class="what-am-i"></span> from <a href="https://maps.
 I use code to <a href="https://jakewelch.design" target="_blank">design cool projects</a> and to <a href="https://instagram.com/jake___welch" target="_blank">experiment with new ideas</a>.
 In my free time I love to <a href="https://www.goodreads.com/jakewelch" target="_blank">read</a>, <a href="https://by.jakewel.ch" target="_blank">write</a>, and fall down <a href="https://www.are.na/jake-welch" target="_blank">research and archiving</a> rabbit holes,
 usually related to <a href="https://www.are.na/jake-welch/ancient-yyde53qgkce">history</a>, <a href="https://www.are.na/jake-welch/art-gallery-zdcjhk1yrrc"> art</a>, and <a href="https://www.are.na/jake-welch/found-deep-on-the-internet"> the internet</a>.
-<br><br>
-This site is my attempt at <a href="https://www.are.na/jake-welch/web-revolution" target="_blank">reclaiming a corner of the internet</a> as a place to share and connect
-in a way that's meaningful and breaks free from <a href="https://www.humanetech.com/youth/the-attention-economy" target="_blank">the exploitative algorithms</a> imposed on us by Big Tech. If you're at all
-interested in having your own personal site, I've written a <a href="https://tutorials.jakewel.ch/build-a-website.html" target="_blank">beginner-friendly guide</a> on how to do so for free! 
 <br><br> 
-Feel free to surf around, and if you feel so inclined, leave a note in my <a href="https://ourworldoftext.com/jakewelch" target="_blank">guest book</a> or shoot me an <a href="mailto:jaketwelch@gmail.com" target="_blank">email</a>.
+Feel free to poke around, every box you see has a header with the file name as it's saved on my computer, and  clicking it links to its source code. Inside the boxes you'll find text, images, and gifs, many of which might link to something cool, so click around! While this site works <I>okay</I> on mobile, desktop is highly recommended.
+<br><br>
+If you're at all
+interested in building your own personal site, I've written a <a href="https://tutorials.jakewel.ch/build-a-website.html" target="_blank">beginner-friendly guide</a> on how to do that for free! 
 <br><br>
 Thanks for visiting!
 
@@ -20,7 +19,6 @@ text-align: center;
 </style>
 
 <script>
-        // Bio titles
         const words = [
             "a designer",
             "a developer",

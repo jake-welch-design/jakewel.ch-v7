@@ -1,0 +1,1 @@
+<a href="mailto:jaketwelch@gmail.com" target="_blank"><img src="hidden-assets/email.gif" style="width: 95px;"></a>.
