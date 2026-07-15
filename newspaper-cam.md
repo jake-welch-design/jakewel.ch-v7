@@ -1,1 +1,0 @@
-<a href="https://newspaper-cam.jakewel.ch" target="_blank" style="text-decoration: none; color: #3e5879;"> <img src="hidden-assets/newspaper.gif" style="width: 65px"></a>

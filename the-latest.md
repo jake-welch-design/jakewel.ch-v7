@@ -1,1 +1,0 @@
-<img src="hidden-assets/whats-new.gif" style="width: 65px;">

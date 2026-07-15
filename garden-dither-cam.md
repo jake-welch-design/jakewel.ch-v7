@@ -1,1 +1,0 @@
-<a href="https://garden-dither-cam.jakewel.ch" target="_blank" style="text-decoration: none; color: #3e5879;"> <img src="hidden-assets/garden.gif" style="width: 65px"></a>
