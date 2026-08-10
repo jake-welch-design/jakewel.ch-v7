@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Personal site + gallery for Jake Welch",
   "scripts": {
-    "cultivate": "node src/cultivate.js .",
+    "cultivate": "node scripts/date-labels.js && node src/cultivate.js .",
     "update-art-gallery": "node art-gallery/fetch-arena.js",
     "images-process": "node images-i-made/process-images.js"
   },
